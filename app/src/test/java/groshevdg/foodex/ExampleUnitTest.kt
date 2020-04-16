@@ -1,4 +1,4 @@
-package com.example.foodex
+package groshevdg.foodex
 
 import org.junit.Test
 

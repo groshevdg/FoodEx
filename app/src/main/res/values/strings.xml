@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">Foodex</string>
+    <string name="app_name">FoodEx</string>
+    <string name="title_register">Зарегистрироваться</string>
+    <string name="title_authorize">Авторизоваться</string>
+    <string name="tab_client">Клиент</string>
+    <string name="tab_restorator">Ресторатор</string>
+    <string name="user_name">Имя пользователя</string>
+    <string name="hint_email">Введите ваш email</string>
+    <string name="hint_password">Введите пароль</string>
+    <string name="login">Войти</string>
+    <string name="hint_login_rest">Введите логин</string>
+    <string name="hint_login">Логин</string>
+    <string name="hint_password_input">Пароль</string>
+    <string name="hint_repeat_password">Повторите пароль</string>
+    <string name="title_instruction">Заполните следующие поля</string>
+    <string name="hint_phone_number">Номер телефона</string>
+    <string name="incorrect">Логин и пароль не совпадают!</string>
+    <string name="forget_password">Забыли пароль?</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

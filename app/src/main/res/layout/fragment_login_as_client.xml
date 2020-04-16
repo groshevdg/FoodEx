@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="groshevdg.foodex.ui.login.LoginAsClientFragment"
+    android:background="@drawable/login_back">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="25dp"
+        android:id="@+id/card"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/title_name"
+                android:text="@string/user_name"
+                android:textSize="@dimen/text_size"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/colorText"
+                android:layout_marginStart="25dp" />
+
+            <EditText
+                android:id="@+id/edit_text_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="25dp"
+                android:textColorHint="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/title_name"
+                app:layout_constraintTop_toBottomOf="@id/title_name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/title_password"
+                android:text="@string/hint_password_input"
+                android:textSize="@dimen/text_size"
+                app:layout_constraintTop_toBottomOf="@id/edit_text_email"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorText"
+                android:layout_marginStart="25dp" />
+
+            <EditText
+                android:id="@+id/edit_text_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="25dp"
+                android:textColorHint="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/title_name"
+                app:layout_constraintTop_toBottomOf="@id/title_password" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forget_password"
+                app:layout_constraintTop_toBottomOf="@id/edit_text_password"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/edit_text_password" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_login_as_client"
+        app:layout_constraintTop_toBottomOf="@id/card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
+        android:text="@string/login"
+        android:textSize="@dimen/text_size"
+        android:background="@drawable/button_custom_background"
+        android:textColor="@color/colorText"
+        android:padding="14dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
