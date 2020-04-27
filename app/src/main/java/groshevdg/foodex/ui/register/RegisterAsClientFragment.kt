@@ -8,21 +8,14 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import groshevdg.foodex.R
 
-import groshevdg.foodex.ui.view_model.ClientViewModel
+import groshevdg.foodex.ui.viewModel.ClientViewModel
 
 class RegisterAsClientFragment : Fragment() {
 
     private lateinit var viewModel: ClientViewModel
 
-    companion object {
-        fun newInstance() =
-            RegisterAsClientFragment()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_register_as_client, container, false)
     }
 

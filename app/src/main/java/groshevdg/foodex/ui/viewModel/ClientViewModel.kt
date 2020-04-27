@@ -1,4 +1,4 @@
-package groshevdg.foodex.ui.view_model
+package groshevdg.foodex.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 

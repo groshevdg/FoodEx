@@ -5,25 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import butterknife.BindView
-import butterknife.ButterKnife
 import groshevdg.foodex.R
 import groshevdg.foodex.ui.login.LoginActivity
 import groshevdg.foodex.ui.register.RegisterActivity
+import kotlinx.android.synthetic.main.activity_choose_action.*
 
 class ChooseActionActivity : AppCompatActivity(), View.OnClickListener {
-    @BindView(R.id.button_login)
-    lateinit var loginBtn: Button
-
-    @BindView(R.id.button_register)
-    lateinit var registerBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_action)
-        ButterKnife.bind(this)
-        registerBtn.setOnClickListener(this)
-        loginBtn.setOnClickListener(this)
+        button_register.setOnClickListener(this)
+        button_login.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {

@@ -7,13 +7,12 @@ import androidx.fragment.app.FragmentPagerAdapter
 class RegisterViewPagerAdapter(manager: FragmentManager, behavior: Int)
     : FragmentPagerAdapter(manager, behavior) {
 
-
     override fun getItem(position: Int): Fragment {
         when (position) {
-            0 -> return RegisterAsClientFragment.newInstance()
-            1 -> return RegisterAsRestoratorFragment.newInstance()
+            0 -> return RegisterAsClientFragment()
+            1 -> return RegisterAsRestoratorFragment()
         }
-        return RegisterAsClientFragment.newInstance()
+        return RegisterAsClientFragment()
     }
 
     override fun getCount(): Int {

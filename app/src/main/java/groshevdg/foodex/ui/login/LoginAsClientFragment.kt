@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import groshevdg.foodex.R
-import groshevdg.foodex.ui.view_model.ClientViewModel
+import groshevdg.foodex.ui.viewModel.ClientViewModel
 
 class LoginAsClientFragment : Fragment() {
     private lateinit var viewModel: ClientViewModel

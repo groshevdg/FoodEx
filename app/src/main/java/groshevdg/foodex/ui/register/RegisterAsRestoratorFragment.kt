@@ -7,20 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import groshevdg.foodex.R
+import groshevdg.foodex.model.Restorator
 
-import groshevdg.foodex.ui.view_model.RestoratorViewModel
+import groshevdg.foodex.ui.viewModel.RestoratorViewModel
 
 class RegisterAsRestoratorFragment : Fragment() {
 
     private lateinit var viewModel: RestoratorViewModel
+    val restorator = Restorator()
 
-    companion object {
-        fun newInstance() =
-            RegisterAsRestoratorFragment()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
 
         return inflater.inflate(R.layout.fragment_register_as_restorator, container, false)
@@ -30,5 +26,4 @@ class RegisterAsRestoratorFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(RestoratorViewModel::class.java)
     }
-
 }

@@ -5,11 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import groshevdg.foodex.R
 import groshevdg.foodex.ui.register.RegisterAsRestoratorFragment
-import groshevdg.foodex.ui.view_model.RestoratorViewModel
+import groshevdg.foodex.ui.viewModel.RestoratorViewModel
 
 class LoginAsRestoratorFragment : Fragment() {
 
