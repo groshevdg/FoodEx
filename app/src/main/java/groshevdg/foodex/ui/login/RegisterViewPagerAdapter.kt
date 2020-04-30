@@ -9,10 +9,10 @@ class RegisterViewPagerAdapter(manager: FragmentManager, behavior: Int)
 
     override fun getItem(position: Int): Fragment {
         when(position) {
-            0 -> return LoginAsClientFragment.newInstance();
-            1 -> return LoginAsRestoratorFragment.newInstance()
+            0 -> return LoginAsClientFragment()
+            1 -> return LoginAsRestoratorFragment()
         }
-        return LoginAsClientFragment.newInstance()
+        return LoginAsClientFragment()
     }
 
     override fun getCount(): Int {

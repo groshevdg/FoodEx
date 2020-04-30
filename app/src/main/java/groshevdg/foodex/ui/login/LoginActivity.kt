@@ -2,8 +2,7 @@ package groshevdg.foodex.ui.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager.widget.ViewPager
-import com.google.android.material.tabs.TabLayout
+import groshevdg.foodex.App
 import groshevdg.foodex.R
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -17,5 +16,6 @@ class LoginActivity : AppCompatActivity() {
         tabs.setupWithViewPager(view_pager_register)
         tabs.getTabAt(0)?.text = resources.getString(R.string.tab_client)
         tabs.getTabAt(1)?.text = resources.getString(R.string.tab_restorator)
+
     }
 }
