@@ -14,12 +14,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.mainActivity.client.ClientMainActivity"
-            android:label="@string/title_activity_client_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".ui.mainActivity.restorator.RestoratorMainActivity"
-            android:label="@string/title_activity_restorator_main"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

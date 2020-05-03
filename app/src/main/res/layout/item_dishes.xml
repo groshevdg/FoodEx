@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginVertical="8dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="150dp"
-        android:layout_height="180dp"
-        android:layout_gravity="center_horizontal"
-        app:cardCornerRadius="20dp">
+        android:layout_width="160dp"
+        android:layout_height="230dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginVertical="8dp"
+        android:layout_gravity="center_horizontal">
 
         <TextView
             android:id="@+id/idNameTextView"
@@ -22,8 +22,9 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="160dp"
             android:id="@+id/idImage"
+            android:scaleType="centerCrop"
             android:layout_marginTop="23dp" />
 
         <TextView
@@ -31,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:gravity="end"
             tools:text="150 Р"
             android:layout_marginEnd="8dp"/>
@@ -41,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:gravity="start"
             tools:text="150 гр"
             android:layout_marginStart="8dp"/>

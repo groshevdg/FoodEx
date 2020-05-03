@@ -1,4 +1,4 @@
-package groshevdg.foodex.ui.mainActivity.client.ui.dishesList.adapter
+package groshevdg.foodex.ui.mainActivity.client.dishesList.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import groshevdg.foodex.App
 import groshevdg.foodex.R
@@ -37,6 +38,14 @@ class LoginAsClientFragment : Fragment(), View.OnClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ClientViewModel::class.java)
+        viewModel.client.observe(viewLifecycleOwner, Observer { client ->
+            if (client != null) {
+                startActivity(Intent(activity, ClientMainActivity::class.java))
+            }
+            else {
+                Toast.makeText(fragmentView.context, "Логин и пароль не совпадают!", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     override fun onClick(v: View?) {
@@ -44,13 +53,7 @@ class LoginAsClientFragment : Fragment(), View.OnClickListener {
         val password = fragmentView.edit_text_password.text.toString()
 
         if (email.isNotEmpty() && password.isNotEmpty()) {
-            val client = viewModel.tryLogin(email, password)
-            if (client != null) {
-                startActivity(Intent(activity, ClientMainActivity::class.java))
-            }
-            else {
-                Toast.makeText(fragmentView.context, "Логин и пароль не совпадают!", Toast.LENGTH_LONG).show()
-            }
+            viewModel.tryLogin(email, password)
         }
         else {
             Toast.makeText(context, "Заполните все поля!", Toast.LENGTH_LONG).show()

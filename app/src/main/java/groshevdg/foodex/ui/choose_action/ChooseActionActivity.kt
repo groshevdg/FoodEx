@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.core.content.ContextCompat
 import groshevdg.foodex.R
 import groshevdg.foodex.ui.login.LoginActivity
 import groshevdg.foodex.ui.register.RegisterActivity
@@ -17,6 +18,7 @@ class ChooseActionActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_choose_action)
         button_register.setOnClickListener(this)
         button_login.setOnClickListener(this)
+        window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.colorPrimaryDark)
     }
 
     override fun onClick(v: View?) {

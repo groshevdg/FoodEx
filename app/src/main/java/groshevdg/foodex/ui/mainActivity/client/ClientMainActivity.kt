@@ -1,52 +1,40 @@
 package groshevdg.foodex.ui.mainActivity.client
 
 import android.os.Bundle
-import android.view.Menu
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import groshevdg.foodex.R
+import kotlinx.android.synthetic.main.activity_client_main.*
 
 class ClientMainActivity : AppCompatActivity() {
-
-    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_main)
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+        window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.colorPrimaryDark)
+        val navView: BottomNavigationView = findViewById(R.id.client_nav_view)
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        val navView: NavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
-            ), drawerLayout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        val navController = findNavController(R.id.client_nav_host_fragment)
         navView.setupWithNavController(navController)
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.client_main, menu)
-        return true
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        navView.setOnNavigationItemSelectedListener { item -> when(item.itemId) {
+                R.id.dishes_list -> {
+                    navController.navigate(R.id.nav_dishes_list)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.choose_restaurant -> {
+                    navController.navigate(R.id.nav_restaurants)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                else -> {
+                    navController.navigate(R.id.nav_favourites)
+                    return@setOnNavigationItemSelectedListener true
+                }
+            }
+        }
     }
 }

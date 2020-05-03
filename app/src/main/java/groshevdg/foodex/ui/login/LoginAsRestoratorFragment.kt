@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import groshevdg.foodex.App
 import groshevdg.foodex.R
 import groshevdg.foodex.di.factory.ViewModelFactory
-import groshevdg.foodex.ui.mainActivity.restorator.RestoratorMainActivity
 import groshevdg.foodex.ui.viewModel.RestoratorViewModel
 import kotlinx.android.synthetic.main.fragment_login_as_restorator.view.*
 import javax.inject.Inject
@@ -40,6 +40,14 @@ class LoginAsRestoratorFragment : Fragment(), View.OnClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(RestoratorViewModel::class.java)
+        viewModel.restorator.observe(viewLifecycleOwner, Observer { restorator ->
+            if (restorator != null) {
+                //startActivity(Intent(activity, RestoratorMainActivity::class.java))
+            }
+            else {
+                Toast.makeText(fragmentView.context, "Логин и пароль не совпадают!", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     override fun onClick(v: View?) {
@@ -47,13 +55,7 @@ class LoginAsRestoratorFragment : Fragment(), View.OnClickListener {
         val password = fragmentView.edit_text_password.text.toString()
 
         if (email.isNotEmpty() && password.isNotEmpty()) {
-            val restorator = viewModel.tryLogin(email, password)
-            if (restorator != null) {
-                startActivity(Intent(activity, RestoratorMainActivity::class.java))
-            }
-            else {
-                Toast.makeText(fragmentView.context, "Логин и пароль не совпадают!", Toast.LENGTH_LONG).show()
-            }
+            viewModel.tryLogin(email, password)
         }
         else {
             Toast.makeText(context, "Заполните все поля!", Toast.LENGTH_LONG).show()

@@ -1,7 +1,6 @@
-package groshevdg.foodex.ui.mainActivity.client.ui.dishesList.adapter
+package groshevdg.foodex.ui.mainActivity.client.dishesList.adapter
 
 import android.content.Context
-import android.media.Image
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView

@@ -1,5 +1,7 @@
 package groshevdg.foodex.ui.viewModel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import groshevdg.foodex.data.db.database.AppDatabase
@@ -12,12 +14,13 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class RestoratorViewModel @Inject constructor(val database: AppDatabase) : ViewModel() {
-    fun tryLogin(email: String, password: String) : Restorator? {
-        var restorator = Restorator()
+    private val mutableRestorator: MutableLiveData<Restorator?> = MutableLiveData()
+    val restorator: LiveData<Restorator?> = mutableRestorator
+
+    fun tryLogin(email: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            restorator = database.restoratorDao().getRetorator(email, password)
+            mutableRestorator.postValue(database.restoratorDao().getRetorator(email, password))
         }
-        return restorator
     }
 
     fun registerRestorator(email: String, password: String, phone: String) {
