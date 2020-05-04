@@ -15,7 +15,7 @@ class RestaurantsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        fragmentView = inflater.inflate(R.layout.fragment_restaurants, container, false)
+        fragmentView = inflater.inflate(R.layout.fragment_client_restaurants, container, false)
         return fragmentView
     }
 }

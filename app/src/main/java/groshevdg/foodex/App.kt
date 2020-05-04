@@ -5,10 +5,12 @@ import groshevdg.foodex.di.components.AppComponent
 import groshevdg.foodex.di.components.DaggerAppComponent
 import groshevdg.foodex.di.modules.ContextModule
 import groshevdg.foodex.di.modules.DatabaseModule
+import groshevdg.foodex.model.Restorator
 
 class App : Application() {
     companion object {
         lateinit var appComponent: AppComponent
+        lateinit var restorator: Restorator
     }
 
     override fun onCreate() {

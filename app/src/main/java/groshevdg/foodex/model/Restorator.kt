@@ -2,6 +2,9 @@ package groshevdg.foodex.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
+import androidx.room.TypeConverters
+import groshevdg.foodex.utils.DataTypeConverter
 
 @Entity
 class Restorator() {

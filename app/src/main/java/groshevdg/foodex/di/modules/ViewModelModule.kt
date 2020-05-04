@@ -6,6 +6,8 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import groshevdg.foodex.di.factory.ViewModelKey
 import groshevdg.foodex.di.scopes.FragmentScope
+import groshevdg.foodex.ui.mainActivity.restorator.dishes.DishesViewModel
+import groshevdg.foodex.ui.mainActivity.restorator.restourants.RestaurantsViewModel
 import groshevdg.foodex.ui.viewModel.ClientViewModel
 import groshevdg.foodex.ui.viewModel.RestoratorViewModel
 
@@ -23,4 +25,16 @@ abstract class ViewModelModule {
     @FragmentScope
     @ViewModelKey(RestoratorViewModel::class)
     abstract fun provideRestoratorViewModel(clientViewModel: RestoratorViewModel) : ViewModel
+
+    @Binds
+    @IntoMap
+    @FragmentScope
+    @ViewModelKey(RestaurantsViewModel::class)
+    abstract fun provideRestaurantViewModel(restaurantsViewModel: RestaurantsViewModel) : ViewModel
+
+    @Binds
+    @IntoMap
+    @FragmentScope
+    @ViewModelKey(DishesViewModel::class)
+    abstract fun provideDishesViewModel(dishesViewModel: DishesViewModel) : ViewModel
 }

@@ -15,7 +15,7 @@
     <fragment android:id="@+id/nav_restaurants"
         android:name="groshevdg.foodex.ui.mainActivity.client.restaurants.RestaurantsFragment"
         android:label="Рестораны"
-        tools:layout="@layout/fragment_restaurants"/>
+        tools:layout="@layout/fragment_client_restaurants"/>
 
     <fragment android:id="@+id/nav_favourites"
         android:name="groshevdg.foodex.ui.mainActivity.client.favourites.FavouritesFragment"
