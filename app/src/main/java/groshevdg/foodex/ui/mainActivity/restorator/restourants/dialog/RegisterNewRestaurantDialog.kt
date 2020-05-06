@@ -19,9 +19,9 @@ class RegisterNewRestaurantDialog(val listener: OnDialogButtonClickListener) : D
                 .setPositiveButton("Создать") { dialog, which ->
 
                     val name = view?.findViewById<EditText>(R.id.dcnrName)?.text.toString()
-                    val address = view?.findViewById<EditText>(R.id.dcnrName)?.text.toString()
-                    val phone = view?.findViewById<EditText>(R.id.dcnrName)?.text.toString()
-                    val photo = view?.findViewById<EditText>(R.id.dcnrName)?.text.toString()
+                    val address = view?.findViewById<EditText>(R.id.dcnrAddress)?.text.toString()
+                    val phone = view?.findViewById<EditText>(R.id.dcnrPhone)?.text.toString()
+                    val photo = view?.findViewById<EditText>(R.id.dcnrPhoto)?.text.toString()
                     val type = view?.findViewById<Spinner>(R.id.dcnrType)?.selectedItem.toString()
 
                     val restaurant = Restaurant()
@@ -34,6 +34,6 @@ class RegisterNewRestaurantDialog(val listener: OnDialogButtonClickListener) : D
                     listener.onCreateButtonWasClicked(restaurant)}
 
             .setNegativeButton("Отмена", { dialog, which ->  })
-                .create()
+            .create()
     }
 }

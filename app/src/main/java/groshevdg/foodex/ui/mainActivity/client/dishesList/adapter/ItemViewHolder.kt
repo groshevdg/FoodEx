@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import groshevdg.foodex.R
 import groshevdg.foodex.model.Dish
 import kotlinx.android.synthetic.main.item_dishes.view.*
 
@@ -23,5 +24,5 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 }
 
 fun ImageView.loadImage(context: Context, url: String, place:ImageView) {
-    Glide.with(context).load(url).into(place)
+    Glide.with(context).load(url).placeholder(R.drawable.placeholder).into(place)
 }

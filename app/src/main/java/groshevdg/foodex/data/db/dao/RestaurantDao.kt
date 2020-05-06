@@ -15,4 +15,7 @@ interface RestaurantDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertRestaurant(restaurant: Restaurant)
+
+    @Query("Select * from Restaurant")
+    fun getAllRestaurants() : Flow<List<Restaurant>>
 }

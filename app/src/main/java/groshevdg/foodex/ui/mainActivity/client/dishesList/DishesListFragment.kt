@@ -5,22 +5,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import groshevdg.foodex.App
 import groshevdg.foodex.R
-import groshevdg.foodex.model.Dish
+import groshevdg.foodex.di.factory.ViewModelFactory
 import groshevdg.foodex.ui.mainActivity.client.dishesList.adapter.DishesRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_dishes_list.view.*
+import javax.inject.Inject
 
 class DishesListFragment : Fragment() {
 
-    private lateinit var dishesViewModel: DishesViewModel
+    private lateinit var clientDishesViewModel: ClientDishesViewModel
     private val adapter = DishesRecyclerAdapter()
     private lateinit var fragmentView: View
+    @Inject lateinit var factory: ViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        dishesViewModel = ViewModelProvider(this).get(DishesViewModel::class.java)
+        App.appComponent.plusFragmentComponent().inject(this)
+        clientDishesViewModel = ViewModelProvider(this, factory).get(ClientDishesViewModel::class.java)
+        clientDishesViewModel.getAllDishes()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -30,16 +36,13 @@ class DishesListFragment : Fragment() {
         val manager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
         fragmentView.fdlDishesRecyclerView.layoutManager = manager
 
-        val list = mutableListOf<Dish>(Dish("Мясо", "https://avatars.mds.yandex.net/get-pdb/234183/d7883f96-0744-463a-997d-37eb15a2d344/s1200?webp=false", "15 руб", "150 гр"),
-            Dish("abc", "", "15", "15"),
-            Dish("abc", "", "15", "15"),
-            Dish("abc", "https://avatars.mds.yandex.net/get-pdb/234183/d7883f96-0744-463a-997d-37eb15a2d344/s1200?webp=false", "15", "15"),
-        Dish("abc", "https://avatars.mds.yandex.net/get-pdb/234183/d7883f96-0744-463a-997d-37eb15a2d344/s1200?webp=false", "15", "15"),
-        Dish("abc", "https://avatars.mds.yandex.net/get-pdb/234183/d7883f96-0744-463a-997d-37eb15a2d344/s1200?webp=false", "15", "15"))
-
-
-        adapter.setData(list)
-
         return fragmentView
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        clientDishesViewModel.dishes.observe(viewLifecycleOwner, Observer { list ->
+            adapter.setData(list)
+        })
     }
 }

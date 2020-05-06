@@ -26,7 +26,7 @@ class RestoratorRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
     }
 
     override fun getItemCount(): Int {
-    return restaurants.size
+        return restaurants.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

@@ -2,11 +2,11 @@ package groshevdg.foodex.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import groshevdg.foodex.App
@@ -40,7 +40,9 @@ class LoginAsClientFragment : Fragment(), View.OnClickListener {
         viewModel = ViewModelProvider(this).get(ClientViewModel::class.java)
         viewModel.client.observe(viewLifecycleOwner, Observer { client ->
             if (client != null) {
-                startActivity(Intent(activity, ClientMainActivity::class.java))
+                val intent = Intent(activity, ClientMainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
             }
             else {
                 Toast.makeText(fragmentView.context, "Логин и пароль не совпадают!", Toast.LENGTH_LONG).show()

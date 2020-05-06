@@ -1,4 +1,4 @@
-package groshevdg.foodex.ui.mainActivity.client.dishesList.adapter
+package groshevdg.foodex.ui.mainActivity.restorator.dishes.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import groshevdg.foodex.model.Dish
 
 class DishesRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    val dishes: MutableList<Dish> = ArrayList()
+    private val dishes: MutableList<Dish> = ArrayList()
 
     fun setData(list: List<Dish>) {
         dishes.clear()
@@ -17,14 +17,15 @@ class DishesRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_dishes, parent, false))
+        return DishViewHolder(LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_restorator_dish, parent, false))
     }
 
     override fun getItemCount(): Int {
-        return dishes.size
+       return dishes.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ItemViewHolder).bind(dishes[position])
+        (holder as DishViewHolder).bind(dishes[position])
     }
 }

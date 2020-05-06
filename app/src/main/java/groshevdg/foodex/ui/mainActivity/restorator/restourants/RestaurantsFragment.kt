@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -44,6 +45,8 @@ class RestaurantsFragment : Fragment(), OnDialogButtonClickListener {
         fragmentView.frRestaurantsRecyclerView.adapter = adapter
         fragmentView.frRestaurantsRecyclerView.layoutManager = LinearLayoutManager(context)
 
+        (activity as AppCompatActivity).supportActionBar?.title = "Мои рестораны"
+
         return fragmentView
     }
 
@@ -51,11 +54,13 @@ class RestaurantsFragment : Fragment(), OnDialogButtonClickListener {
         super.onActivityCreated(savedInstanceState)
         viewModel.restaurants.observe(viewLifecycleOwner, Observer {
             if (it.isEmpty()) {
-                frRestaurantsRecyclerView.visibility = View.INVISIBLE
+                frRestaurantsRecyclerView.visibility = View.GONE
+                frrNoElementsInRecycler.visibility = View.VISIBLE
             }
             else {
                 adapter.setData(it)
                 frrNoElementsInRecycler.visibility = View.GONE
+                frRestaurantsRecyclerView.visibility = View.VISIBLE
             }
         })
     }

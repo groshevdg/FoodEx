@@ -44,7 +44,9 @@ class LoginAsRestoratorFragment : Fragment(), View.OnClickListener {
         viewModel.restorator.observe(viewLifecycleOwner, Observer { restorator ->
             if (restorator != null) {
                 App.restorator = restorator
-                startActivity(Intent(activity, RestoratorMainActivity::class.java))
+                val intent = Intent(activity, RestoratorMainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
             }
             else {
                 Toast.makeText(fragmentView.context, "Логин и пароль не совпадают!", Toast.LENGTH_LONG).show()
