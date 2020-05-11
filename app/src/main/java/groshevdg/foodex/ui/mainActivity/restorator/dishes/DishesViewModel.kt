@@ -28,4 +28,12 @@ class DishesViewModel @Inject constructor(private val database: AppDatabase) : V
             database.dishDao().insertDish(dish)
         }
     }
+
+    fun updateDish(dish: Dish) {
+        viewModelScope.launch(Dispatchers.IO) { database.dishDao().insertDish(dish) }
+    }
+
+    fun deleteDish(dish: Dish) {
+        viewModelScope.launch(Dispatchers.IO) { database.dishDao().deleteDish(dish) }
+    }
 }

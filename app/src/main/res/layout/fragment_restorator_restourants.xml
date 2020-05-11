@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:text="Создайте новый ресторан, нажав на плюс в панели навигации"
         android:textSize="20sp"
+        android:visibility="gone"
         android:gravity="center" />
 
     <androidx.recyclerview.widget.RecyclerView

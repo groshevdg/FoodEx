@@ -7,8 +7,12 @@ import groshevdg.foodex.R
 import groshevdg.foodex.model.Dish
 
 class DishesRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
+    private lateinit var listener: DishClickListener
     private val dishes: MutableList<Dish> = ArrayList()
+
+    fun setClickListener(listener: DishClickListener) {
+        this.listener = listener
+    }
 
     fun setData(list: List<Dish>) {
         dishes.clear()
@@ -26,6 +30,6 @@ class DishesRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as DishViewHolder).bind(dishes[position])
+        (holder as DishViewHolder).bind(dishes[position], listener)
     }
 }

@@ -7,8 +7,12 @@ import groshevdg.foodex.R
 import groshevdg.foodex.model.Restaurant
 
 class ClientRestaurantsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
+    private lateinit var listener: RestaurantWasSelectedListener
     private val restaurants: MutableList<Restaurant> = ArrayList()
+
+    fun setResListener(listener: RestaurantWasSelectedListener) {
+        this.listener = listener
+    }
 
     fun setData(list: List<Restaurant>) {
         restaurants.clear()
@@ -26,6 +30,6 @@ class ClientRestaurantsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ClientRestaurantViewHolder).bind(restaurants[position])
+        (holder as ClientRestaurantViewHolder).bind(restaurants[position], listener)
     }
 }

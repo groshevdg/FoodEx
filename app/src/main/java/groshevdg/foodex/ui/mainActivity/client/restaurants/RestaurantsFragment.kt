@@ -13,6 +13,7 @@ import groshevdg.foodex.R
 import groshevdg.foodex.di.factory.ViewModelFactory
 import groshevdg.foodex.ui.mainActivity.client.dishesList.ClientDishesViewModel
 import groshevdg.foodex.ui.mainActivity.client.restaurants.adapter.ClientRestaurantsRecyclerAdapter
+import groshevdg.foodex.ui.mainActivity.client.restaurants.adapter.RestaurantWasSelectedListener
 import kotlinx.android.synthetic.main.fragment_client_restaurants.view.*
 import javax.inject.Inject
 
@@ -27,6 +28,7 @@ class RestaurantsFragment : Fragment() {
         App.appComponent.plusFragmentComponent().inject(this)
         viewModel = ViewModelProvider(this,factory).get(ClientDishesViewModel::class.java)
         viewModel.getAllRestaurants()
+        adapter.setResListener(activity as RestaurantWasSelectedListener)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

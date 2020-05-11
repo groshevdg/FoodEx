@@ -12,8 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.mainActivity.restorator.RestoratorMainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".ui.basket.BasketActivity"></activity>
+        <activity android:name=".ui.mainActivity.client.detalize.DetalizeActivity" />
+        <activity
+            android:name=".ui.mainActivity.restorator.RestoratorMainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ui.mainActivity.client.ClientMainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

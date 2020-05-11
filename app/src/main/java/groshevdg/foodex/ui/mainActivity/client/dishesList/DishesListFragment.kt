@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import groshevdg.foodex.App
 import groshevdg.foodex.R
 import groshevdg.foodex.di.factory.ViewModelFactory
+import groshevdg.foodex.model.Dish
+import groshevdg.foodex.ui.mainActivity.client.dishesList.adapter.DishWasSelected
 import groshevdg.foodex.ui.mainActivity.client.dishesList.adapter.DishesRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_dishes_list.view.*
 import javax.inject.Inject
@@ -27,6 +29,7 @@ class DishesListFragment : Fragment() {
         App.appComponent.plusFragmentComponent().inject(this)
         clientDishesViewModel = ViewModelProvider(this, factory).get(ClientDishesViewModel::class.java)
         clientDishesViewModel.getAllDishes()
+        adapter.setDishListener(activity as DishWasSelected)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

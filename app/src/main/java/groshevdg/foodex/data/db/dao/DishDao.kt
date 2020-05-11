@@ -1,9 +1,6 @@
 package groshevdg.foodex.data.db.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import groshevdg.foodex.model.Dish
 import kotlinx.coroutines.flow.Flow
 
@@ -18,4 +15,10 @@ interface DishDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDish(dish: Dish)
+
+    @Update
+    fun updateDish(dish: Dish)
+
+    @Delete
+    fun deleteDish(dish: Dish)
 }

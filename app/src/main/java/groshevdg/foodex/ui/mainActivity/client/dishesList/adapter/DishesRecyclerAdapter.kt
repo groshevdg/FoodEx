@@ -8,7 +8,12 @@ import groshevdg.foodex.model.Dish
 
 class DishesRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    lateinit var listener: DishWasSelected
     val dishes: MutableList<Dish> = ArrayList()
+
+    fun setDishListener(l: DishWasSelected) {
+        this.listener = l
+    }
 
     fun setData(list: List<Dish>) {
         dishes.clear()
@@ -25,6 +30,6 @@ class DishesRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ItemViewHolder).bind(dishes[position])
+        (holder as ItemViewHolder).bind(dishes[position], listener)
     }
 }

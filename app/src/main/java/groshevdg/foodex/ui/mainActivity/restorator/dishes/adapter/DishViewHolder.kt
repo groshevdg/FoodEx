@@ -8,7 +8,8 @@ import kotlinx.android.synthetic.main.item_restorator_dish.view.*
 class DishViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val name = itemView.irdName
 
-    fun bind(dish: Dish) {
+    fun bind(dish: Dish, listener: DishClickListener) {
         name.text = dish.name
+        itemView.setOnClickListener{ v -> listener.dishWasSelected(dish) }
     }
 }

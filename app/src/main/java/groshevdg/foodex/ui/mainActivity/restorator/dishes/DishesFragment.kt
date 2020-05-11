@@ -13,7 +13,9 @@ import groshevdg.foodex.R
 import groshevdg.foodex.di.factory.ViewModelFactory
 import groshevdg.foodex.model.Dish
 import groshevdg.foodex.model.Restaurant
+import groshevdg.foodex.ui.mainActivity.restorator.dishes.adapter.DishClickListener
 import groshevdg.foodex.ui.mainActivity.restorator.dishes.adapter.DishesRecyclerAdapter
+import groshevdg.foodex.ui.mainActivity.restorator.dishes.dialog.ChangeDishDialog
 import groshevdg.foodex.ui.mainActivity.restorator.dishes.dialog.CreateNewDishDialog
 import groshevdg.foodex.ui.mainActivity.restorator.dishes.dialog.OnDialogButtonClickListener
 import kotlinx.android.synthetic.main.fragment_restorator_dishes.*
@@ -21,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_restorator_dishes.view.*
 import kotlinx.android.synthetic.main.fragment_restorator_dishes.view.frdNoElementsInRecycler
 import javax.inject.Inject
 
-class DishesFragment : Fragment(), OnDialogButtonClickListener {
+class DishesFragment : Fragment(), OnDialogButtonClickListener, DishClickListener {
 
     private lateinit var viewModel: DishesViewModel
     private lateinit var fragmentView: View
@@ -34,6 +36,7 @@ class DishesFragment : Fragment(), OnDialogButtonClickListener {
         App.appComponent.plusFragmentComponent().inject(this)
         viewModel = ViewModelProvider(this, factory).get(DishesViewModel::class.java)
         restaurant = arguments?.getSerializable("restaurant") as Restaurant
+        adapter.setClickListener(this)
         viewModel.getDishes(restaurant.id!!)
     }
 
@@ -63,6 +66,10 @@ class DishesFragment : Fragment(), OnDialogButtonClickListener {
         })
     }
 
+    override fun deleteDish(dish: Dish) {
+        viewModel.deleteDish(dish)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.restorator_menu, menu)
     }
@@ -79,8 +86,16 @@ class DishesFragment : Fragment(), OnDialogButtonClickListener {
         }
     }
 
-    override fun buttonIsClicked(dish: Dish) {
+    override fun saveDish(dish: Dish) {
         dish.restaurantId = restaurant.id!!
         viewModel.saveDishInBD(dish)
+    }
+
+    override fun refactorDish(dish: Dish) {
+        viewModel.updateDish(dish)
+    }
+
+    override fun dishWasSelected(dish: Dish) {
+        ChangeDishDialog(this, dish).show(activity?.supportFragmentManager!!, "change")
     }
 }

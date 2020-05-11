@@ -15,14 +15,15 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val price = itemView.idPrice
     val weight = itemView.idWeight
 
-    fun bind(dish: Dish) {
+    fun bind(dish: Dish, listener: DishWasSelected) {
+        itemView.setOnClickListener{ v -> listener.selected(dish)}
         name.text = dish.name
-        image.loadImage(image.context, dish.image, image)
+        image.loadImage(image.context, dish.image)
         price.text = dish.price
         weight.text = dish.weight
     }
 }
 
-fun ImageView.loadImage(context: Context, url: String, place:ImageView) {
-    Glide.with(context).load(url).placeholder(R.drawable.placeholder).into(place)
+fun ImageView.loadImage(context: Context, url: String) {
+    Glide.with(context).load(url).placeholder(R.drawable.placeholder).into(this)
 }

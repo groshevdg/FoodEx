@@ -12,10 +12,11 @@ class ClientRestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemV
     val rating = itemView.icrlRating
     val photo = itemView.icrlPhoto
 
-    fun bind(restaurant: Restaurant) {
+    fun bind(restaurant: Restaurant, listener: RestaurantWasSelectedListener) {
+        itemView.setOnClickListener{v -> listener.selected(restaurant) }
         name.text = (restaurant.type + " " + restaurant.name)
         address.text = restaurant.address
         rating.text = restaurant.rating.toString()
-        photo.loadImage(photo.context, restaurant.photo, photo)
+        photo.loadImage(photo.context, restaurant.photo)
     }
 }

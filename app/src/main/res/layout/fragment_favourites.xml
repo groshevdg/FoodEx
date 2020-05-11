@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/main_back"
-    tools:context=".ui.mainActivity.restorator.dishes.DishesFragment">
+    android:background="@drawable/main_back">
 
     <TextView
-        android:id="@+id/frdNoElementsInRecycler"
+        android:id="@+id/ffNoElementsInRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Добавьте блюда в меню, нажав на плюс в панели навигации"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Пока нет блюд, добавленных в избранное"
         android:textSize="20sp"
         android:visibility="gone"
         android:gravity="center" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ffDishesRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/frdDishesRecyclerView"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_height="match_parent" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
